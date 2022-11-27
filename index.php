@@ -168,7 +168,7 @@
           </div>
           <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
           <h4 class="p-price">$ <?php echo $row['product_price']; ?></h4>
-          <a href="<?php echo "single_product.php?product_id =". $row['product_id'];?>"><button class="buy-btn">Buy Now</button></a>
+          <a href="<?php echo "single_product.php?product_id=". $row['product_id'];?>"><button class="buy-btn">Buy Now</button></a>
         </div>
 
         <?php } ?> 
