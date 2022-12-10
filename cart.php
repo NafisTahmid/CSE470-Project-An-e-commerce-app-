@@ -26,7 +26,7 @@ if(isset($_POST['add_to_cart'])){
       //product has already been added
       }else{
 
-          echo '<script>alert("Product was already to cart");</script>';
+          echo '<script>alert("Product was already added to cart");</script>';
           //echo '<script>window.location="index.php";</script>';
 
       }
@@ -56,13 +56,15 @@ if(isset($_POST['add_to_cart'])){
     }
 
      //calculate total
-    calculateTotalCart()  
+    calculateTotalCart();  
     
 //remove product from cart    
 }else if(isset($_POST['remove_product'])){
 
   $product_id=$_POST['product_id'];
   unset($_SESSION['cart'][$product_id]);
+  //calculate total
+  calculateTotalCart();
 
 }else if(isset($_POST['edit_quantity'])){
 
@@ -74,7 +76,7 @@ if(isset($_POST['add_to_cart'])){
       $product_array=$_SESSION['cart'][$product_id];
 
       //update product quantity
-      $old_quantity=$product_quantity;
+      $product_array['product_quantity']=$product_quantity;
 
       //return array back its place
       $_SESSION['cart'][$product_id]=$product_array;
@@ -83,10 +85,9 @@ if(isset($_POST['add_to_cart'])){
       calculateTotalCart();
 
 
-
 }else{
 
-  header('location: index.php');
+  //header('location: index.php');
 }
 
 
@@ -101,7 +102,7 @@ function calculateTotalCart(){
 
         $total=$total+($price*$quantity);
 
-
+ 
     }
 
     $_SESSION['total']=$total;
@@ -166,7 +167,7 @@ function calculateTotalCart(){
         >
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="index.php">Home</a>
             </li>
 
             <li class="nav-item">
@@ -182,7 +183,7 @@ function calculateTotalCart(){
             </li>
 
             <li class="nav-item">
-              <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+              <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
               <a href="account.html"><i class="fa-solid fa-user"></i></a>
             </li>
           </ul>
@@ -191,10 +192,10 @@ function calculateTotalCart(){
     </nav>
 
     <!--Cart-->
-    <section class="cart contariner my-5 py-5">
+    <section class="cart container my-5 py-5">
       <div class="container mt-5">
         <h2 class="font-weight-bolde">Your Cart</h2>
-        <hr />
+        <hr>
       </div>
 
       <table class="mt-5 pt-5">
@@ -235,7 +236,7 @@ function calculateTotalCart(){
 
           <td> 
             <span>$</span>  
-            <span class="product-price"><?php echo $value['product_quantity'] * $value['product_price']; ?> </span>
+            <span class="product-price"><?php echo $value['product_quantity']*$value['product_price']; ?> </span>
           </td>
         </tr>
 

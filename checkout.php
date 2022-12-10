@@ -7,7 +7,7 @@ if(! empty($_SESSION['cart']) && isset($_POST['checkout'])){
 
 //let user in  
 
-//send user to home page
+//send user to home pagechro
 }else{
       //take user to the homepage
     header('location: index.php');
@@ -15,18 +15,6 @@ if(! empty($_SESSION['cart']) && isset($_POST['checkout'])){
 
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
