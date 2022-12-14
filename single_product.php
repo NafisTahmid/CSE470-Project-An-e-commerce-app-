@@ -62,7 +62,7 @@ else {
      <!--Nabbar-->
      <nav class="navbar navbar-expand-lg bg-white py-3 fixed-top">
       <div class="container">
-        <img class="logo" src="assets/imgs/logo.png" />
+        <img class="logo" src="views/assets/imgs/logo.png" />
         <h2 class="brand">Orange</h2>
         <button
           class="navbar-toggler"
@@ -148,7 +148,6 @@ else {
        
 
         <div class="col-lg-6 col-md-12 col-12">
-          <h6>Men's Shoes</h6>
           <h3 class="py-4"><?php echo $row['product_name']; ?></h3>
           <h2>$<?php echo $row['product_price']; ?></h2>
           <form method="POST" action="cart.php">
@@ -162,9 +161,7 @@ else {
           <input type="number" name="product_quantity"  value="1" />
           <button class="buy-btn" type="submit" name="add_to_cart">Add to Cart</button>
         </form>
-         
-  
-
+        
           
           <h4 class="mt-5 mb-5">Product details</h4>
           <span>
@@ -187,8 +184,11 @@ else {
       
       </div>
       <div class="row mx-auto container-fluid">
+        
+        <?php include('controller/get_related_products_shoes.php'); ?>
+        <?php while($row=$related_products_shoes->fetch_assoc()) {?>
         <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-          <img class="img-fluid mb-3" src="views/assets/imgs/featured1.jpg" />
+          <img class="img-fluid mb-3" src="views/assets/imgs/<?php echo $row['product_image']; ?>"/>
           <div class="star">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
@@ -198,10 +198,15 @@ else {
           </div>
           <h5 class="p-name">Sport Shoes</h5>
           <h4 class="p-price">$199.8</h4>
-          <button class="buy-btn">Buy Now</button>
+          <a href="<?php echo "single_product.php?product_id=". $row['product_id'];?>"><button class="buy-btn">Buy Now</button></a>
         </div>
+        <?php } ?>
+        
+
 
         <div class="product text-center col-lg-3 col-md-4 col-sm-12">
+          
+
           <img class="img-fluid mb-3" src="views/assets/imgs/featured2.jpg" />
           <div class="star">
             <i class="fas fa-star"></i>
@@ -212,10 +217,14 @@ else {
           </div>
           <h5 class="p-name">Sport Shoes</h5>
           <h4 class="p-price">$199.8</h4>
-          <button class="buy-btn">Buy Now</button>
+          <a href="<?php echo "single_product.php?product_id=". $row['product_id'];?>"><button class="buy-btn">Buy Now</button></a>
+        
+      
         </div>
 
         <div class="product text-center col-lg-3 col-md-4 col-sm-12">
+            
+     
           <img class="img-fluid mb-3" src="views/assets/imgs/featured3.jpg" />
           <div class="star">
             <i class="fas fa-star"></i>
@@ -226,10 +235,15 @@ else {
           </div>
           <h5 class="p-name">Sport Shoes</h5>
           <h4 class="p-price">$199.8</h4>
-          <button class="buy-btn">Buy Now</button>
+         
+          <a href="<?php echo "single_product.php?product_id=". $row['product_id'];?>"><button class="buy-btn">Buy Now</button></a>
+      
         </div>
+        
 
         <div class="product text-center col-lg-3 col-md-4 col-sm-12">
+
+      
           <img class="img-fluid mb-3" src="views/assets/imgs/featured4.jpg" />
           <div class="star">
             <i class="fas fa-star"></i>
@@ -240,7 +254,8 @@ else {
           </div>
           <h5 class="p-name">Sport Shoes</h5>
           <h4 class="p-price">$199.8</h4>
-          <button class="buy-btn">Buy Now</button>
+          <a href="<?php echo "single_product.php?product_id=". $row['product_id'];?>"><button class="buy-btn">Buy Now</button></a>
+    
         </div>
       </div>
     </section>
